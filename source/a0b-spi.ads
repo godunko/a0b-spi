@@ -30,14 +30,18 @@ is
      (Self              : in out SPI_Slave_Device;
       Transmit_Buffer   : aliased A0B.Types.Unsigned_8;
       Receive_Buffer    : aliased out A0B.Types.Unsigned_8;
-      Finished_Callback : A0B.Callbacks.Callback) is abstract;
-   --  Transmit and receive data to/from the device. Call callback when
-   --  transmission is done.
+      Finished_Callback : A0B.Callbacks.Callback;
+      Success           : in out Boolean) is abstract;
+   --  Transmit and receive data to/from the device. Given callback will be
+   --  called when transmission is done.
 
    not overriding procedure Transmit
      (Self              : in out SPI_Slave_Device;
       Transmit_Buffer   : aliased A0B.Types.Unsigned_8;
-      Finished_Callback : A0B.Callbacks.Callback) is abstract;
+      Finished_Callback : A0B.Callbacks.Callback;
+      Success           : in out Boolean) is abstract;
+   --  Transmit data to/from the device. Received data is ignored. Given
+   --  callback will be called when transmission is done.
 
    --  type SPI_Software_Selection_Controlled_Slave_Device is limited interface
    --    and SPI_Slave_Device;
