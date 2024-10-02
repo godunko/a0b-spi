@@ -43,6 +43,12 @@ is
    --  Transmit data to/from the device. Received data is ignored. Given
    --  callback will be called when transmission is done.
 
+   not overriding procedure Select_Device
+     (Self : in out SPI_Slave_Device) is abstract;
+
+   not overriding procedure Release_Device
+     (Self : in out SPI_Slave_Device) is abstract;
+
    --  type SPI_Software_Selection_Controlled_Slave_Device is limited interface
    --    and SPI_Slave_Device;
 
